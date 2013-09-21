@@ -79,9 +79,11 @@ unsetOldPlaces($mysqli);
 /*
  * Handle requests
  */
-if (isset($_GET['addplace'])) {
-  if(!addPlace($mysqli, $_GET['addplace'])) {
+if (isset($_POST['addplace'])) {
+  if(!addPlace($mysqli, $_POST['addplace'])) {
     echo "Kunde inte lägga till platsen";
+  } else {
+    header("Location: " . $_SERVER['PHP_SELF']);
   }
 }
 
@@ -227,7 +229,7 @@ body {
     </div><?php endwhile;?>
   </div>
   <div class="input-append">
-    <form action="" method="get">
+    <form action="" method="post">
       <input type="text" class="span3" placeholder="Nytt område" name="addplace" id="addplace"/>
       <button type="submit" class="btn btn-default">Lägg till</button>
     </form>
