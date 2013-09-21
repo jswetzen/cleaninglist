@@ -1,4 +1,4 @@
-CREATE TABLE  `cleaning`.`places` (
+CREATE TABLE  `places` (
         `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
         `name` VARCHAR( 30 ) NOT NULL ,
         `state` BOOL NOT NULL DEFAULT '0',
