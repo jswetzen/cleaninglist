@@ -1,4 +1,4 @@
-Cleanlist
+Cleaning list
 =========
 
 A list of places to clean with the option to check them as done, cleared every new week
