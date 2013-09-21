@@ -103,7 +103,7 @@ $mysqli->close();
 <html>
 <head>
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport" />
-<meta content="yes" name="apple-mobile-web-app-capable" />
+<!--<meta content="yes" name="apple-mobile-web-app-capable" /> DISABLED UNTIL APPLE FIXES SAFARI BUGS-->
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
 <meta charset=utf-8 />
 <script src="http://code.jquery.com/jquery.min.js"></script>
