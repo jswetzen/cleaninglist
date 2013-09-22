@@ -206,7 +206,7 @@ a {
   width: 90px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: red;
+  background-color: rgba(255,0,0,0.6);
 }
 .place {
   z-index: 2;
@@ -214,8 +214,9 @@ a {
   width: auto;
   padding: 10px;
   margin-bottom: 10px;
-  background-color: lightgray;
+  background-color: #eee;
   border-radius: 15px;
+  box-shadow: 0px 2px 0px 0px #999;
   font-size: 25px;
   font-weight: bold;
   text-decoration: none;
