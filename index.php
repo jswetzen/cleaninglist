@@ -161,6 +161,19 @@ $().ready(function () {
             }
         });
     });
+    /* Fix line-height for delete buttons */
+    $('.place').each(function() {
+        var height = $(this).outerHeight();
+        $(this).prev().find('span').css({'line-height': height+'px'});
+    });
+});
+$( window ).resize(function() {
+    /* Fix line-height for delete buttons
+       when the window is resized as well */
+    $('.place').each(function() {
+        var height = $(this).outerHeight();
+        $(this).prev().find('span').css({'line-height': height+'px'});
+    });
 });
 </script>
 
@@ -168,6 +181,13 @@ $().ready(function () {
 body {
   text-align: center;
   margin: 10px;
+}
+a:hover {
+  text-decoration: none;
+  color: #2A80FA;	
+}
+a {
+  color: #2A80FA;
 }
 #edit-box {
     text-align: right;
@@ -183,7 +203,6 @@ body {
   right: 0;
   font-size: 25px;
   font-weight: bold;
-  padding: 10px;
   width: 90px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
@@ -221,7 +240,9 @@ body {
   <div id="places">
     <?php while($place = $places_res->fetch_array()): ?>
     <div class="button-holder">
-    <span class="delete">X</span>
+    <div class="delete">
+      <span>X</span>
+    </div>
     <span id="<?php echo $place['id']; ?>"
     class="place <?php echo intval($place['state']) ? "done" : ""; ?>">
         <?php echo $place['name']; ?>
