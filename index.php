@@ -104,6 +104,7 @@ $mysqli->close();
 ?><!DOCTYPE html>
 <html>
 <head>
+<meta name="description" content="Connect Church Städ" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport" />
 <!--<meta content="yes" name="apple-mobile-web-app-capable" /> DISABLED UNTIL APPLE FIXES SAFARI BUGS-->
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
