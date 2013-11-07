@@ -3,3 +3,4 @@ $db_host = "localhost";
 $db_database = "cleaning";
 $db_user = "cleaning";
 $db_password = "password";
+$support_email = "name@example.com";

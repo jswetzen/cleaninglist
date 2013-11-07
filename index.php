@@ -1,5 +1,5 @@
 <?php
-require('db.php');
+require('settings.php');
 /*
  * Function definitions
  */
@@ -232,6 +232,10 @@ a {
   padding: 10px;
   font-size: 25px;
 }
+.email-link {
+  display: block;
+  padding: 15px;
+}
 </style>
 </head>
 <body>
@@ -257,8 +261,6 @@ a {
       <button type="submit" class="btn btn-default">Lägg till</button>
     </form>
   </div>
-<script>
-
-</script>
+  <a class="email-link" href="mailto:<?php echo $support_email; ?>?subject=Feedback till Connect Church Cleaning-app">Skicka en fråga eller ett förslag</a>
 </body>
 </html>
