@@ -5,7 +5,7 @@ require('settings.php');
  */
 /* Sets status not done on places that were set done before this week */
 function unsetOldPlaces($mysqli) {
-  $result = $mysqli->query("UPDATE places SET state = 0, changed = NOW() where WEEK(changed,1) <> WEEK(NOW(),1) OR (YEAR(changed) <> YEAR(NOW()))");
+  $result = $mysqli->query("UPDATE places SET laststate = state, state = 0, changed = NOW() where WEEK(changed,1) <> WEEK(NOW(),1) OR (YEAR(changed) <> YEAR(NOW()))");
   return $result;
 }
 
@@ -162,18 +162,20 @@ $().ready(function () {
             }
         });
     });
-    /* Fix line-height for delete buttons */
+    /* Fix line-height for last week indicators and delete buttons */
     $('.place').each(function() {
         var height = $(this).outerHeight();
-        $(this).prev().find('span').css({'line-height': height+'px'});
+        $(this).prev().css({'height': height+'px'});
+        $(this).prev().prev().find('span').css({'line-height': height+'px'});
     });
 });
 $( window ).resize(function() {
-    /* Fix line-height for delete buttons
-       when the window is resized as well */
+    /* Fix line-height for last week indicators and
+       delete buttons when the window is resized as well */
     $('.place').each(function() {
         var height = $(this).outerHeight();
-        $(this).prev().find('span').css({'line-height': height+'px'});
+        $(this).prev().css({'height': height+'px'});
+        $(this).prev().prev().find('span').css({'line-height': height+'px'});
     });
 });
 </script>
@@ -181,7 +183,7 @@ $( window ).resize(function() {
 <style>
 body {
   text-align: center;
-  margin: 10px;
+  margin: 15px;
 }
 a:hover {
   text-decoration: none;
@@ -223,6 +225,22 @@ a {
   text-decoration: none;
   -webkit-touch-callout: none;
 }
+.last-week {
+  z-index: 2;
+  display: block;
+  width: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-left: -20px;
+  background-color: #eee;
+  border-radius: 0px 15px 15px 0px;
+  box-shadow: 0px 2px 0px 0px #999;
+  font-size: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  -webkit-touch-callout: none;
+  float: left;
+}
 .done {
   background-color: #00A600;
   color: white;
@@ -249,6 +267,7 @@ a {
     <div class="delete">
       <span>X</span>
     </div>
+    <span class="last-week <?php echo intval($place['laststate']) ? "done" : ""; ?>"></span>
     <span id="<?php echo $place['id']; ?>"
     class="place <?php echo intval($place['state']) ? "done" : ""; ?>">
         <?php echo $place['name']; ?>
