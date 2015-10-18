@@ -104,7 +104,7 @@ $mysqli->close();
 ?><!DOCTYPE html>
 <html>
 <head>
-<meta name="description" content="Connect Church Städ" />
+<meta name="description" content="<?php echo $heading; ?>" />
 <meta content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no" name="viewport" />
 <!--<meta content="yes" name="apple-mobile-web-app-capable" /> DISABLED UNTIL APPLE FIXES SAFARI BUGS-->
 <meta name="apple-mobile-web-app-status-bar-style" content="black">
@@ -121,6 +121,7 @@ function removePlace(id, name) {
 $.ajax({
     url: '?remove=' + id,
     success: function () {
+        $('span#'+id).prev().prev().remove();
         $('span#'+id).prev().remove();
         $('span#'+id).remove();
     }
@@ -148,8 +149,8 @@ function switchDeleteButtons() {
 /* Add onclick methods to delete and place buttons */
 $().ready(function () {
     $('.delete').click(function() {
-        var id = $(this).next().attr('id');
-        var name = $(this).next().text().trim();
+        var id = $(this).next().next().attr('id');
+        var name = $(this).next().next().text().trim();
         removePlace(id, name);
     });
 
@@ -209,7 +210,7 @@ a {
   width: 90px;
   border-top-right-radius: 15px;
   border-bottom-right-radius: 15px;
-  background-color: rgba(255,0,0,0.6);
+  background-color: rgba(255,0,0,1);
 }
 .place {
   z-index: 2;
